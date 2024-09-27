@@ -288,9 +288,19 @@ visitors_with_nations <- visitors %>%
 
 visitors_with_nations %>% 
   filter(nation == "Scotland", admission == "Free") %>%
-  summarise(count = n())
+  summarise(count = n(), prportion = n() / 97)
+
+visitors_with_nations %>% 
+  filter(nation == "Wales", admission == "Free") %>%
+  summarise(count = n(), prportion = n() / 2)
+
+visitors_with_nations %>% 
+  filter(nation == "Northern Ireland", admission == "Free") %>%
+  summarise(count = n(), prportion = n() / 9)
             
-# get the number for every nation and then calculate the proportion
+visitors_with_nations %>% 
+  filter(nation == "England", admission == "Free") %>%
+  summarise(count = n(), prportion = n() / 240)
   
 
 ```
