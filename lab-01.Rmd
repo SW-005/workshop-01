@@ -77,7 +77,7 @@ visitors %>% arrange(desc(n_2022))
 
 _What are the top 10 most visited attractions in 2021?_
 ```{r Ex_c}
-#visitors %>% 
+visitors %>% 
   arrange(desc(n_2021)) %>%
   head(n = 10)
 ```
