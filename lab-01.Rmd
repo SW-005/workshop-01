@@ -312,7 +312,22 @@ _Calculate the percentage change in visitor admissions from 2021 to 2022. Of the
 
 ```{r Ex_n}
 # Write your code here
+visitors_with_nations <- visitors %>%
+  mutate(
+    nation = case_when(
+      region == "Northern Ireland" ~ "Northern Ireland",
+      region == "Scotland" ~ "Scotland",
+      region == "Wales" ~ "Wales",
+      TRUE ~ "England"
+    )
+  )
 
+visitors_with_nations %>%
+  filter(nation == "Scotland") %>%
+  group_by(admission) %>%
+  summarise(sum_2022 = sum(n_2022), sum_2021 = sum(n_2021, na.rm = TRUE)) %>%
+  mutate(change = (sum_2022 - sum_2021) / sum_2021) %>%
+  arrange(change)
 
 
 ```
